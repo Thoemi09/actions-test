@@ -28,12 +28,6 @@ jobs:
           libc++-15-dev
           libc++abi-15-dev
           libomp-15-dev
-      
-      - name: Get llvm and clang
-        run: |
-          ls -l /usr/lib/llvm-15/lib
-          ls -l /usr/lib/llvm-14/lib
-          ls -l /usr/lib/llvm/lib
 
       - name: Build doxygen
         run: |
@@ -41,7 +35,7 @@ jobs:
           cd doxygen
           mkdir build
           cd build
-          cmake .. -Duse_libclang=ON -DLLVM_DIR=/usr/lib/llvm-15/lib/cmake/llvm -DCMAKE_CXX_COMPILER=clang++-15 -DCMAKE_C_COMPILER=clang-15
+          cmake .. -Duse_libclang=ON -DLLVM_ROOT=/usr/lib/llvm-15/lib/cmake/llvm -DCLANG_ROOT=/usr/lib/llvm-15/lib/cmake/clang -DCLANG_DIR=/usr/lib/llvm-15/lib/cmake/clang -DCMAKE_CXX_COMPILER=clang++-15 -DCMAKE_C_COMPILER=clang-15
           make
           make install
           doxygen --version
