@@ -20,15 +20,18 @@ jobs:
           libomp-15-dev
       
       - name: Get llvm and clang
-        run: ls -l /usr/bin/
+        run: |
+          flex --version
+          bison --version
 
       - name: Build doxygen
-        run: git clone https://github.com/doxygen/doxygen.git &&
-          cd doxygen && 
-          mkdir build && 
-          cd build &&
-          cmake .. -Duse_libclang=ON -DLLVM_DIR=/usr/lib/llvm-15/lib/cmake/llvm Clang_DIR=/usr/lib/llvm-15/lib/cmake/clang -DCMAKE_CXX_COMPILER=clang++-15 -DCMAKE_C_COMPILER=clang-15 &&
-          make &&
-          make install &&
+        run: |
+          git clone https://github.com/doxygen/doxygen.git
+          cd doxygen
+          mkdir build
+          cd build
+          cmake .. -Duse_libclang=ON -DLLVM_DIR=/usr/lib/llvm-15/lib/cmake/llvm Clang_DIR=/usr/lib/llvm-15/lib/cmake/clang -DCMAKE_CXX_COMPILER=clang++-15 -DCMAKE_C_COMPILER=clang-15
+          make
+          make install
           doxygen --version
 
