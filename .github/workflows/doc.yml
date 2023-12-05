@@ -18,7 +18,14 @@ jobs:
           libc++-15-dev
           libc++abi-15-dev
           libomp-15-dev
-          doxygen
 
-      - name: Get clang path
-        run: which clang++-15 && which clang++
+      - name: Build doxygen
+        run: git clone git@github.com:doxygen/doxygen.git &&
+          cd doxygen && 
+          mkdir build && 
+          cd build &&
+          cmake .. -Duse_libclang=ON -DCMAKE_CXX_COMPILER=clang++-15 -DCMAKE_C_COMPILER=clang-15 &&
+          make &&
+          make install &&
+          doxygen --version
+
