@@ -31,8 +31,9 @@ jobs:
       
       - name: Get llvm and clang
         run: |
-          ls -l /usr/lib/llvm-15/lib/cmake/clang
-          cat /usr/lib/llvm-15/lib/cmake/clang/ClangConfig.cmake
+          ls -l /usr/lib/llvm-15/lib
+          ls -l /usr/lib/llvm-14/lib
+          ls -l /usr/lib/llvm/lib
 
       - name: Build doxygen
         run: |
