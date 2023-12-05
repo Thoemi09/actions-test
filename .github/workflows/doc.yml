@@ -21,8 +21,8 @@ jobs:
       
       - name: Get llvm and clang
         run: |
-          flex --version
-          bison --version
+          ls -l /usr/lib/llvm-15/lib/cmake/clang
+          cat /usr/lib/llvm-15/lib/cmake/clang/ClangConfig.cmake
 
       - name: Build doxygen
         run: |
