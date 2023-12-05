@@ -20,11 +20,5 @@ jobs:
           libomp-15-dev
           doxygen
 
-      - name: Get doxygen versions
-        run: doxygen --version
-    
-      - name: Get clang version
-        run: clang++ --version
-    
-      - name: Get git version
-        run: git --version
+      - name: Get clang path
+        run: which clang++-15 && which clang++
