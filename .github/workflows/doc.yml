@@ -13,18 +13,7 @@ jobs:
         run: >
           sudo apt-get update &&
           sudo apt-get install
-          llvm-15
-          llvm-15-dev
-          llvm-15-tools
-          llvm-15-runtime
-          clang-15
-          clang-format-15
-          libclang-common-15-dev
           libclang-15-dev
-          libclang-cpp15
-          libclang1-15
-          libllvm15
-          g++-12
           libc++-15-dev
           libc++abi-15-dev
           libomp-15-dev
@@ -35,8 +24,8 @@ jobs:
           cd doxygen
           mkdir build
           cd build
-          cmake .. -Duse_libclang=ON -DLLVM_ROOT=/usr/lib/llvm-15/lib/cmake/llvm -DClang_ROOT=/usr/lib/llvm-15/lib/cmake/clang -DCMAKE_CXX_COMPILER=clang++-15 -DCMAKE_C_COMPILER=clang-15
-          make
+          cmake .. -Duse_libclang=ON -Dstatic_libclang=YES -Duse_libc++=NO -DLLVM_ROOT=/usr/lib/llvm-15/lib/cmake/llvm -DClang_ROOT=/usr/lib/llvm-15/lib/cmake/clang -DCMAKE_CXX_COMPILER=clang++-15 -DCMAKE_C_COMPILER=clang-15
+          make -j 2 VERBOSE=1
           make install
           doxygen --version
 
