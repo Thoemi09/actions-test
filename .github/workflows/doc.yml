@@ -13,7 +13,16 @@ jobs:
         run: >
           sudo apt-get update &&
           sudo apt-get install
+          llvm-15
+          llvm-15-dev
+          llvm-15-tools
+          llvm-15-runtime
           clang-15
+          clang-format-15
+          libclang-common-15-dev
+          libclang-cpp15
+          libclang1-15
+          libllvm15
           g++-12
           libc++-15-dev
           libc++abi-15-dev
