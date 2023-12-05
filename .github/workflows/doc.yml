@@ -20,7 +20,7 @@ jobs:
           libomp-15-dev
 
       - name: Build doxygen
-        run: git clone git@github.com:doxygen/doxygen.git &&
+        run: git clone https://github.com/doxygen/doxygen.git &&
           cd doxygen && 
           mkdir build && 
           cd build &&
