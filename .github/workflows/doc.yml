@@ -22,15 +22,12 @@ jobs:
       - name: Get versions
         run: python --version && flex --version && bison --version
 
-      - name: Check llvm
-        run: ls -l /usr/lib/llvm-15/ && ls -l /usr/lib/llvm-15/lib/cmake/clang/
-
       - name: Build doxygen
         run: git clone https://github.com/doxygen/doxygen.git &&
           cd doxygen && 
           mkdir build && 
           cd build &&
-          cmake .. -Duse_libclang=ON -DCMAKE_CXX_COMPILER=clang++-15 -DCMAKE_C_COMPILER=clang-15 &&
+          cmake .. -Duse_libclang=ON -DLLVM_DIR=/usr/lib/llvm-15/lib/cmake/llvm Clang_DIR=/usr/lib/llvm-15/lib/cmake/clang -DCMAKE_CXX_COMPILER=clang++-15 -DCMAKE_C_COMPILER=clang-15 &&
           make &&
           make install &&
           doxygen --version
