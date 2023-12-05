@@ -18,6 +18,12 @@ jobs:
           libc++-15-dev
           libc++abi-15-dev
           libomp-15-dev
+      
+      - name: Get versions
+        run: python --version && flex --version && bison --version
+
+      - name: Check llvm
+        run: ll /usr/lib/llvm-15/ && ll /usr/lib/llvm-15/lib/cmake/clang/
 
       - name: Build doxygen
         run: git clone https://github.com/doxygen/doxygen.git &&
