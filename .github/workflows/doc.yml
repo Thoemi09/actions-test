@@ -1,0 +1,30 @@
+name: Build documentation
+on: workflow_dispatch
+
+jobs:
+  build-doc:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+    
+      - name: Install deps
+        run: >
+          sudo apt-get update &&
+          sudo apt-get install -y \
+            clang-15
+            g++-12
+            libc++-15-dev
+            libc++abi-15-dev
+            libomp-15-dev
+            doxygen
+
+      - name: Get doxygen versions
+        run: doxygen --version
+    
+      - name: Get clang version
+        run: clang++ --version
+    
+      - name: Get git version
+        run: git --version
