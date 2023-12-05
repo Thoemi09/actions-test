@@ -27,5 +27,22 @@ jobs:
           cmake .. -Duse_libclang=ON -Dstatic_libclang=YES -Duse_libc++=NO -DLLVM_ROOT=/usr/lib/llvm-15/lib/cmake/llvm -DClang_ROOT=/usr/lib/llvm-15/lib/cmake/clang -DCMAKE_CXX_COMPILER=clang++-15 -DCMAKE_C_COMPILER=clang-15
           make -j 2 VERBOSE=1
           make install
-          doxygen --version
+    
+      - name: Build documentation
+        run: |
+          cd ${{ github.workspace }}
+          ls -l
+          mkdir build
+          cd build
+          cmake ..
+          make -j 2 VERBOSE=1
+          ls -l doc/html
+
+      - name: Deploy documentation
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: build/doc/html
+          branch: github.io
+          target-folder: docs/main
+         
 
