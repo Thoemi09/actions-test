@@ -35,7 +35,7 @@ jobs:
           cd doxygen
           mkdir build
           cd build
-          cmake .. -Duse_libclang=ON -DLLVM_ROOT=/usr/lib/llvm-15/lib/cmake/llvm -DCLANG_ROOT=/usr/lib/llvm-15/lib/cmake/clang -DCMAKE_CXX_COMPILER=clang++-15 -DCMAKE_C_COMPILER=clang-15
+          cmake .. -Duse_libclang=ON -DLLVM_ROOT=/usr/lib/llvm-15/lib/cmake/llvm -DClang_ROOT=/usr/lib/llvm-15/lib/cmake/clang -DCMAKE_CXX_COMPILER=clang++-15 -DCMAKE_C_COMPILER=clang-15
           make
           make install
           doxygen --version
