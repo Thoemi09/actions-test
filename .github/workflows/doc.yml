@@ -20,7 +20,7 @@ jobs:
           libomp-15-dev
       
       - name: Get llvm and clang
-        run: ls -l /usr/lib/llvm-15/lib/cmake/llvm && ls -l /usr/lib/llvm-15/lib/cmake/clang
+        run: ls -l /usr/bin/
 
       - name: Build doxygen
         run: git clone https://github.com/doxygen/doxygen.git &&
